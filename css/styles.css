@@ -20,39 +20,86 @@ DO NOT use CSS frameworks (Bootstrap, Tailwind, etc.)
    TODO: Define your color scheme and spacing variables
    ============================================================ */
 :root {
-    /* Colors - TODO: Customize your color palette */
-    --color-primary: /* Your primary color */;
-    --color-primary-dark: /* Darker shade */;
-    --color-secondary: /* Secondary color */;
-    --color-text: /* Main text color */;
-    --color-text-light: /* Lighter text */;
-    --color-background: /* Page background */;
-    --color-background-alt: /* Alternate background */;
-    --color-border: /* Border color */;
+  /* Colors - TODO: Customize your color palette */
+  /* Core Palette */
+  --portage-50: #edf0ff;
+  --portage-100: #dee5ff;
+  --portage-200: #c4ceff;
+  --portage-300: #a0aeff;
+  --portage-400: #8e95ff;
+  --portage-500: #5d5bf9;
+  --portage-600: #4c3dee;
+  --portage-900: #2f2986;
+  --portage-950: #1e184e;
 
-    /* Typography - TODO: Define your font sizes */
-    --font-family: /* Your font stack */;
-    --font-size-base: /* Base size, e.g., 16px */;
-    --font-size-sm: /* Small text */;
-    --font-size-lg: /* Large text */;
-    --font-size-xl: /* Extra large */;
-    --font-size-2xl: /* Headings */;
-    --font-size-3xl: /* Large headings */;
+  /* Functional Mapping */
+  --color-primary: var(--portage-950); /* Main brand color */
+  --color-primary-dark: var(--portage-600); /* Hover states */
+  --color-secondary: var(--portage-200); /* Soft accents */
 
-    /* Spacing - TODO: Define spacing scale */
-    --spacing-xs: /* Extra small */;
-    --spacing-sm: /* Small */;
-    --spacing-md: /* Medium */;
-    --spacing-lg: /* Large */;
-    --spacing-xl: /* Extra large */;
+  --color-background: var(--portage-50); /* Main canvas */
+  --color-background-alt: white; /* Use pure white for cards to create "lift" */
 
-    /* Layout */
-    --max-width: /* Container max-width */;
-    --border-radius: /* Default border radius */;
+  --color-text: var(--portage-950); /* High-contrast headings */
+  --color-text-light: var(--portage-900); /* Readable body text */
+  --color-border: var(--portage-200); /* Subtle dividers */
 
-    /* Transitions */
-    --transition-fast: /* Fast transition */;
-    --transition-normal: /* Normal transition */;
+  /* Transition for smooth switching */
+  --mode-transition:
+    background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+  /* Apply transitions to everything */
+  body,
+  section,
+  div,
+  p,
+  h1,
+  h2,
+  h3,
+  card,
+  input,
+  textarea {
+    transition: var(--mode-transition);
+  }
+
+  /* Typography - TODO: Define your font sizes */
+  --font-family: "DM Sans", "Segoe UI", sans-serif; /* Your font stack */
+  --font-size-base: 1rem; /* Base size, e.g., 16px */
+  --font-size-sm: 0.875rem; /* Small text */
+  --font-size-lg: 1.125rem; /* Large text */
+  --font-size-xl: 1.375rem; /* Extra large */
+  --font-size-2xl: 1.75rem; /* Headings */
+  --font-size-3xl: 2.5rem; /* Large headings */
+
+  /* Spacing - TODO: Define spacing scale */
+  --spacing-xs: 0.25rem; /* Extra small */
+  --spacing-sm: 0.5rem; /* Small */
+  --spacing-md: 1rem; /* Medium */
+  --spacing-lg: 1.5rem; /* Large */
+  --spacing-xl: 2.5rem; /* Extra large */
+
+  /* Layout */
+  --max-width: 1200px; /* Container max-width */
+  --border-radius: 8px; /* Default border radius */
+
+  /* Transitions */
+  --transition-fast: 0.2s ease; /* Fast transition */
+  --transition-normal: 0.3s ease; /* Normal transition */
+
+  /* This version uses %23 for # and %7b/%7d for braces to ensure the animation renders */
+  /* ... your other variables ... */
+  --bg-shape-pattern: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='560' preserveAspectRatio='xMidYMid slice' viewBox='0 0 1440 560'%3e%3cg fill='none'%3e%3cpath d='M489.7 663.9c43.1-3 77.6-31.5 99.6-68.7 22.4-38 35.1-84.4 13.3-122.7-22-38.6-68.4-51.9-112.9-52.3-45.4-.5-91.8 12.1-116.9 50-27.8 41.9-35.6 97.4-9.6 140.5 25.3 42 77.6 56.5 126.5 53.2z' fill='rgba(142,149,255,0.24)' class='float1'/%3e%3ccircle cx='1157' cy='506' r='114' fill='rgba(142,149,255,0.24)' class='float2'/%3e%3ccircle cx='238' cy='344' r='131' fill='rgba(142,149,255,0.24)' class='float2'/%3e%3ccircle cx='1000' cy='277' r='93' fill='rgba(142,149,255,0.24)' class='float3'/%3e%3ccircle cx='130' cy='211' r='143' fill='rgba(142,149,255,0.24)' class='float1'/%3e%3c/g%3e%3cstyle%3e.float1%7banimation:f1 5s infinite%7d.float2%7banimation:f2 4s infinite%7d.float3%7banimation:f3 6s infinite%7d@keyframes f1%7b0%25,100%25%7btransform:translate(0,0)%7d50%25%7btransform:translate(-10px,10px)%7d%7d@keyframes f2%7b0%25,100%25%7btransform:translate(0,0)%7d50%25%7btransform:translate(15px,-5px)%7d%7d@keyframes f3%7b0%25,100%25%7btransform:translate(0,0)%7d50%25%7btransform:translate(0,-15px)%7d%7d%3c/style%3e%3c/svg%3e");
+}
+
+/* DARK MODE — all variable overrides in one place */
+#dark-mode-toggle:checked ~ .app-container {
+  --color-primary: var(--portage-400);
+  --color-primary-dark: var(--portage-500);
+  --color-background: hsl(236, 22%, 8%);
+  --color-background-alt: hsl(236, 24%, 10%);
+  --color-text: var(--portage-50);
+  --color-text-light: var(--portage-200);
+  --color-border: hsl(236, 39%, 30%);
 }
 
 /* ============================================================
@@ -62,31 +109,49 @@ DO NOT use CSS frameworks (Bootstrap, Tailwind, etc.)
 *,
 *::before,
 *::after {
-    /* TODO: box-sizing, margin, padding reset */
+  /* TODO: box-sizing, margin, padding reset */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    /* TODO: scroll-behavior, font-size */
+  /* TODO: scroll-behavior, font-size */
+  scroll-behavior: smooth;
+  font-size: 16px; /* Base font size for rem calculations */
 }
 
 body {
-    /* TODO: font-family, color, background-color, line-height */
+  /* TODO: font-family, color, background-color, line-height */
+  font-family: var(--font-family);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  line-height: 1.7;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 img {
-    /* TODO: Make images responsive */
+  /* TODO: Make images responsive */
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 a {
-    /* TODO: Link styles */
+  /* TODO: Link styles */
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-normal);
 }
 
 a:hover {
-    /* TODO: Link hover state */
+  /* TODO: Link hover state */
+  color: var(--color-primary-light);
 }
 
 ul {
-    /* TODO: List reset */
+  /* TODO: List reset */
+  list-style: none;
 }
 
 /* ============================================================
@@ -94,12 +159,16 @@ ul {
    TODO: Create reusable utility classes
    ============================================================ */
 .container {
-    /* TODO: Container styles
+  /* TODO: Container styles
      * - width: 100%
      * - max-width
      * - margin: 0 auto
      * - padding
      */
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
 }
 
 /* ============================================================
@@ -107,33 +176,97 @@ ul {
    TODO: Style your buttons
    ============================================================ */
 .btn {
-    /* TODO: Base button styles
+  /* TODO: Base button styles
      * - display, padding
      * - border, border-radius
      * - font-size, font-weight
      * - text-align, cursor
      * - transition
      */
+
+  display: inline-block;
+  vertical-align: middle;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition:
+    background var(--transition-normal),
+    color var(--transition-normal),
+    border-color var(--transition-normal),
+    transform var(--transition-normal);
 }
 
 .btn--primary {
-    /* TODO: Primary button (filled) */
+  /* TODO: Primary button (filled) */
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+  border-radius: var(--border-radius);
 }
 
 .btn--primary:hover {
-    /* TODO: Primary button hover */
+  /* TODO: Primary button hover */
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(142, 149, 255, 0.35);
+}
+
+.btn--primary:active {
+  transform: scale(0.95);
+  box-shadow: none;
+  transition-duration: 0.1s;
 }
 
 .btn--outline {
-    /* TODO: Outline button (bordered) */
+  /* TODO: Outline button (bordered) */
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+  border-radius: var(--border-radius);
 }
 
 .btn--outline:hover {
-    /* TODO: Outline button hover */
+  /* TODO: Outline button hover */
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: scale(1.05);
+  box-shadow: none;
+}
+
+.btn--outline:active {
+  transform: scale(0.95);
+  transition-duration: 0.1s;
 }
 
 .btn--small {
-    /* TODO: Small button variant */
+  /* TODO: Small button variant */
+  font-size: var(--font-size-sm);
+
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+  border-radius: var(--border-radius);
+}
+
+.btn--small:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(142, 149, 255, 0.24);
+}
+
+.btn--small:active {
+  transform: scale(0.95);
+  box-shadow: none;
+  transition-duration: 0.1s;
 }
 
 /* ============================================================
@@ -145,34 +278,81 @@ ul {
    - Mobile-friendly (links stack or hamburger menu)
    ============================================================ */
 .header {
-    /* TODO: Style the header
+  /* TODO: Style the header
        Consider: position, background, padding, box-shadow, z-index */
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 100;
+  transition: background var(--transition-normal);
 }
 
 .nav {
-    /* TODO: Use Flexbox for navigation layout
+  /* TODO: Use Flexbox for navigation layout
      * - display: flex
      * - justify-content: space-between
      * - align-items: center
      */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  gap: var(--spacing-md);
 }
 
 .nav__logo a {
-    /* TODO: Logo styles */
+  /* TODO: Logo styles */
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .nav__menu {
-    /* TODO: Style navigation menu
+  /* TODO: Style navigation menu
        Mobile: Stack vertically or hide
        Desktop: Horizontal with Flexbox */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  position: absolute;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  transform: translateY(-110%);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
 }
 
 .nav__menu a {
-    /* TODO: Navigation link styles */
+  /* TODO: Navigation link styles */
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  font-weight: 400;
+  transition: color var(--transition-normal);
+  opacity: 0.8;
+  transition:
+    opacity var(--transition-normal),
+    transform var(--transition-normal);
 }
 
 .nav__menu a:hover {
-    /* TODO: Navigation link hover */
+  /* TODO: Navigation link hover */
+  color: var(--color-primary);
+  opacity: 1;
+  transform: translateY(-3px);
 }
 
 /* ============================================================
@@ -180,17 +360,39 @@ ul {
    TODO: Style hero section
    ============================================================ */
 .hero {
-    /* TODO: Style hero section
+  /* TODO: Style hero section
        Consider: min-height, background, centering content
        Use Flexbox for centering */
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(4rem, 15vh, 8rem) var(--spacing-lg);
+  background-color: var(--color-background);
+  background-image: var(--bg-shape-pattern);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%; /* This forces the whole SVG into the hero box */
 }
 
 .hero__content h1 {
-    /* TODO: Style your name */
+  /* TODO: Style your name */
+  font-size: var(--font-size-3xl);
+  color: var(--color-text);
+  font-weight: 300;
+  margin-bottom: var(--spacing-md);
+}
+
+.hero__content p {
+  color: var(--color-text-light);
 }
 
 .hero__tagline {
-    /* TODO: Style tagline */
+  /* TODO: Style tagline */
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xl);
 }
 
 /* ============================================================
@@ -198,38 +400,71 @@ ul {
    TODO: Style about section using CSS Grid or Flexbox
    ============================================================ */
 .about {
-    /* TODO: Section padding */
+  /* TODO: Section padding */
+  background: var(--color-background-alt);
+  padding: 6rem 0;
 }
 
 .about h2 {
-    /* TODO: Section heading */
+  /* TODO: Section heading */
+  font-size: var(--font-size-3xl);
+  font-weight: 300;
+  margin-bottom: var(--spacing-xl);
 }
 
 .about__content {
-    /* TODO: Use CSS Grid or Flexbox for layout
+  /* TODO: Use CSS Grid or Flexbox for layout
        Mobile: Stack image above text
        Desktop: Side by side */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
 }
 
 .about__image img {
-    /* TODO: Style profile image */
+  /* TODO: Style profile image */
+  width: 100%;
+  height: 18rem;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  transition: transform var(--transition-normal);
 }
 
 .about__text p {
-    /* TODO: Paragraph styles */
+  /* TODO: Paragraph styles */
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+  line-height: 1.8;
 }
 
 .about__text h3 {
-    /* TODO: Subheading styles */
+  /* TODO: Subheading styles */
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  margin-bottom: var(--spacing-md);
 }
 
 .skills-list {
-    /* TODO: Style skills list
+  /* TODO: Style skills list
        Consider: Flexbox, tags/badges style */
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
 }
 
 .skills-list li {
-    /* TODO: Individual skill badge */
+  /* TODO: Individual skill badge */
+  font-size: var(--font-size-sm);
+  padding: 0.35rem 0.5rem;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  color: var(--color-text-light); /* was rgba(47,41,134,0.75) */
+  transition:
+    background var(--transition-normal),
+    color var(--transition-normal),
+    transform var(--transition-normal);
 }
 
 /* ============================================================
@@ -237,49 +472,91 @@ ul {
    TODO: Style projects using CSS Grid
    ============================================================ */
 .projects {
-    /* TODO: Section styling */
+  /* TODO: Section styling */
+  padding: 6rem 0;
+  background-color: var(--color-background);
 }
 
 .projects h2 {
-    /* TODO: Section heading */
+  /* TODO: Section heading */
+  font-size: var(--font-size-3xl);
+  font-weight: 300;
+  margin-bottom: var(--spacing-xl);
 }
 
 .projects__grid {
-    /* TODO: Use CSS Grid for project cards
+  /* TODO: Use CSS Grid for project cards
        Mobile: 1 column
        Tablet: 2 columns
        Desktop: 3 columns */
+  display: grid;
+  /* This is the secret sauce: cards stay at least 300px but grow to fill space */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  width: 100%;
 }
 
 .project-card {
-    /* TODO: Style project cards
+  /* TODO: Style project cards
      * - background, border-radius, overflow
      * - box-shadow, transition
      */
+  background: var(--color-background-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition:
+    transform var(--transition-normal),
+    box-shadow var(--transition-normal);
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
-    /* TODO: Card hover effect */
+  /* TODO: Card hover effect */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(142, 149, 255, 0.1);
+  /* border-color: var(--color-primary); */
 }
 
 .project-card img {
-    /* TODO: Project image */
+  /* TODO: Project image */
+  width: 100%;
+  aspect-ratio: 3/4;
+  height: 10rem;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
 .project-card__content {
-    /* TODO: Card content area */
+  /* TODO: Card content area */
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .project-card__content h3 {
-    /* TODO: Project title */
+  /* TODO: Project title */
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  margin-bottom: var(--spacing-sm);
 }
 
 .project-card__content p {
-    /* TODO: Project description */
+  /* TODO: Project description */
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: var(--spacing-md);
 }
 
 .project-card__links {
-    /* TODO: Links container (Flexbox) */
+  /* TODO: Links container (Flexbox) */
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
 }
 
 /* ============================================================
@@ -287,43 +564,90 @@ ul {
    TODO: Style contact form
    ============================================================ */
 .contact {
-    /* TODO: Section styling */
+  /* TODO: Section styling */
+  background: var(--color-background-alt);
+  padding: 6rem 0;
+
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  min-height: 600px; /* Gives it enough space to feel centered */
+  width: 100%;
+}
+
+.contact__container {
+  max-width: 90%; /* Keeps a nice breathing margin on small screens */
+  margin: 0 auto;
+  align-items: center;
 }
 
 .contact h2 {
-    /* TODO: Section heading */
+  /* TODO: Section heading */
+  font-size: var(--font-size-3xl);
+  font-weight: 300;
+  margin-bottom: var(--spacing-xl);
 }
 
 .contact__form {
-    /* TODO: Style contact form
+  /* TODO: Style contact form
        Consider: max-width, centering */
+  margin: 0 auto;
+  max-width: 600px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
 }
 
 .form-group {
-    /* TODO: Form group spacing */
+  /* TODO: Form group spacing */
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .form-group label {
-    /* TODO: Label styles */
+  /* TODO: Label styles */
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+  color: var(--color-text-light);
 }
 
 .form-group input,
 .form-group textarea {
-    /* TODO: Style form inputs
+  /* TODO: Style form inputs
      * - width: 100%
      * - padding, border, border-radius
      * - font-family, font-size
      * - transition
      */
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  padding: 0.75rem var(--spacing-md);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  color: var(--color-text);
+  transition:
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+  width: 100%;
+  outline: none;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-    /* TODO: Focus state */
+  /* TODO: Focus state */
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(142, 149, 255, 0.12);
 }
 
 .form-group textarea {
-    /* TODO: Textarea specific styles */
+  /* TODO: Textarea specific styles */
+  resize: vertical;
+  min-height: 140px;
 }
 
 /* ============================================================
@@ -331,26 +655,46 @@ ul {
    TODO: Style footer
    ============================================================ */
 .footer {
-    /* TODO: Footer styling
+  /* TODO: Footer styling
      * - background, color, padding
      * - text-align
      */
+
+  padding: var(--spacing-xl) 0;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-background);
 }
 
 .footer .container {
-    /* TODO: Footer layout (Flexbox) */
+  /* TODO: Footer layout (Flexbox) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  text-align: center;
 }
 
 .footer__social {
-    /* TODO: Social links container */
+  /* TODO: Social links container */
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
 }
 
 .footer__social a {
-    /* TODO: Social link styles */
+  /* TODO: Social link styles */
+  display: flex;
+  align-items: center;
+  opacity: 0.6;
+  transition:
+    opacity var(--transition-normal),
+    transform var(--transition-normal);
 }
 
 .footer__social a:hover {
-    /* TODO: Social link hover */
+  /* TODO: Social link hover */
+  opacity: 1;
+  transform: translateY(-3px);
 }
 
 /* ============================================================
@@ -363,26 +707,393 @@ ul {
 
 /* Tablet (768px and up) */
 @media (min-width: 768px) {
-    /* TODO: Add tablet styles
+  /* TODO: Add tablet styles
        - Adjust typography sizes
        - Change layouts (Grid columns, Flexbox directions)
        - Adjust spacing */
+  .nav__menu {
+    position: static;
+    flex-direction: row;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    width: auto;
+    background: transparent;
+    border: none;
+    padding: 0;
+    gap: var(--spacing-xl);
+  }
+
+  /* Also hide hamburger on desktop */
+  .hamburger {
+    display: none;
+  }
+
+  .about__content {
+    grid-template-columns: 280px 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .about__content {
+    grid-template-columns: 340px 1fr;
+  }
+
+  .btn {
+    font-size: 1rem; /* Full size for desktop */
+  }
 }
 
 /* Desktop (1024px and up) */
 @media (min-width: 1024px) {
-    /* TODO: Add desktop styles
+  /* TODO: Add desktop styles
        - Further layout adjustments
        - Larger typography
        - More spacing */
+
+  .hero__content h1 {
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+  }
 }
 
 /* Large Desktop (1200px and up) */
 @media (min-width: 1200px) {
-    /* TODO: Add large desktop styles (optional) */
+  /* TODO: Add large desktop styles (optional) */
+
+  .container {
+    padding: 0 var(--spacing-xl);
+  }
 }
 
 /* ============================================================
    ADDITIONAL STYLES
    TODO: Add any additional styles you need
    ============================================================ */
+
+/* Tablet and Desktop View */
+@media (min-width: 640px) {
+  .about__container {
+    flex-direction: row; /* Side by side */
+    align-items: center;
+    text-align: left;
+    gap: var(--spacing-xl);
+  }
+
+  .about__image {
+    flex: 1;
+    max-width: 400px; /* Prevents the image from being too huge */
+  }
+
+  .about__content {
+    flex: 1;
+  }
+
+  .footer__container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  /* Button scaling */
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem; /* Slightly smaller for mobile */
+    transition: transform 0.2s ease;
+  }
+}
+
+.footer__social svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: var(--color-text);
+  transition: fill var(--transition-normal); /* was transform, not transition */
+}
+
+.footer__social a:hover svg {
+  fill: var(--color-primary);
+}
+
+/* Standard syntax */
+::placeholder {
+  color: var(--color-text-light); /* was rgba(47,41,134,0.75) */
+  opacity: 0.7;
+}
+
+/* For Chrome, Safari, and newer Edge */
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: var(--color-text-light); /* was rgba(47,41,134,0.75) */
+  opacity: 0.7;
+}
+
+.footer-copyright {
+  color: var(--color-text-light);
+}
+
+.mode-label {
+  cursor: pointer;
+  padding: 6px 10px;
+  background: var(--color-background-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 1;
+  transition:
+    background var(--transition-normal),
+    border-color var(--transition-normal);
+}
+
+/* Make the icons small and neat */
+.mode-label span {
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.mode-label .moon {
+  display: none;
+}
+.mode-label .sun {
+  display: block;
+}
+
+/* Swap icons when checked */
+#dark-mode-toggle:checked ~ .app-container .mode-label .sun {
+  display: none;
+}
+#dark-mode-toggle:checked ~ .app-container .mode-label .moon {
+  display: block;
+}
+
+.about h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: 300;
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-text); /* add this */
+}
+
+.about__text h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text); /* add this */
+}
+
+.projects h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: 300;
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-text); /* add this */
+}
+
+.project-card__content h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text); /* add this */
+}
+
+.contact h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: 300;
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-text); /* add this */
+}
+
+/* ============================================================
+   ANIMATIONS & SCROLL REVEAL
+   ============================================================ */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero loads in with staggered delay */
+.hero__content h1 {
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero__tagline {
+  animation: fadeUp 0.8s 0.2s ease both; /* 0.2s delay */
+}
+
+.hero__cta {
+  animation: fadeUp 0.8s 0.4s ease both; /* 0.4s delay */
+}
+
+/* Scroll reveal — elements start invisible */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+/* When JS adds .visible, they animate in */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+
+/* ============================================================
+   HAMBURGER MENU — CSS only
+   ============================================================ */
+
+/* Hide hamburger on desktop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition:
+    transform var(--transition-normal),
+    opacity var(--transition-normal),
+    background var(--transition-normal);
+}
+
+/* Animate bars into X when checked */
+#nav-toggle:checked ~ .app-container .hamburger span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+#nav-toggle:checked ~ .app-container .hamburger span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+#nav-toggle:checked ~ .app-container .hamburger span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Show mobile menu when checked */
+#nav-toggle:checked ~ .app-container .nav__menu {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (max-width: 767px) {
+  .hamburger {
+    display: flex;
+  }
+}
+
+.nav__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+/* ============================================================
+   PRINT STYLESHEET — bonus feature
+   ============================================================ */
+@media print {
+  /* Hide things that make no sense on paper */
+  .header,
+  .hamburger,
+  .mode-label,
+  .btn,
+  .contact__form,
+  .footer__social,
+  #dark-mode-toggle,
+  #nav-toggle {
+    display: none !important;
+  }
+
+  /* Reset colours to plain black on white */
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+  }
+
+  /* Remove background colours from sections */
+  .hero,
+  .about,
+  .projects,
+  .contact,
+  .footer {
+    background: #fff !important;
+    padding: 1cm 0;
+  }
+
+  /* Make headings clearly visible */
+  h1,
+  h2,
+  h3 {
+    color: #000 !important;
+    page-break-after: avoid;
+  }
+
+  h2 {
+    border-bottom: 1pt solid #000;
+    padding-bottom: 4pt;
+  }
+
+  /* Keep cards readable but simplified */
+  .project-card {
+    border: 1pt solid #ccc !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    margin-bottom: 0.5cm;
+  }
+
+  /* Print URLs next to links so they're useful on paper */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #555;
+  }
+
+  /* But not for anchor links like #home, #about */
+  a[href^="#"]::after {
+    content: "";
+  }
+
+  /* Skills print inline instead of as badges */
+  .skills-list {
+    display: block;
+  }
+
+  .skills-list li {
+    display: inline;
+    border: none;
+    padding: 0;
+    margin-right: 8pt;
+  }
+
+  .skills-list li::after {
+    content: "·";
+    margin-left: 8pt;
+  }
+
+  .skills-list li:last-child::after {
+    content: "";
+  }
+}
