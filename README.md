@@ -1,4 +1,4 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/8NpkA7e4)
+1[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/8NpkA7e4)
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=22854340&assignment_repo_type=AssignmentRepo)
 # Assignment 1: Responsive Portfolio Website
 
@@ -127,9 +127,10 @@ Before submitting, verify:
 
 ## Your Information
 
-**Name:** [Your Name]
-**Student ID:** [Your Student ID]
-**Design Theme:** [Describe your portfolio theme/style]
+**Name:** Deborah Bupe Nyirenda
+**Student ID:** 2021445500
+**Design Theme:** A modern, responsive portfolio with a deep navy and periwinkle colour palette, featuring a CSS-only dark/light mode toggle, scroll-reveal animations, hamburger navigation, and a print stylesheet.
+
 
 ### CSS Techniques Used
 - [ ] CSS Custom Properties
